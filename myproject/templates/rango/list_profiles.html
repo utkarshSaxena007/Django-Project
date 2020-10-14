@@ -1,0 +1,39 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+User Profiles
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron p-3">
+	<div class="container">
+		<h1 class="jumbotron-heading">User Profiles</h1>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		{% if userprofile_list %}
+		<div class="panel-body">
+			<div class="list-group">
+				{% for listuser in userprofile_list %}
+				<div class="list-group-item">
+					{% if listuser.picture %}
+					<img src="{{ MEDIA_URL }}{{listuser.picture}}" width="64" height="64" alt="{{listuser.user.username}}">
+					{% else %}
+					<img width="64" height="64" src="https://lorempixel.com/64/64/people/"/>
+					{% endif %}
+					<h5 class="list-group-item-text">
+						<a href="{% url 'rango:profile' listuser.user.username %}">{{ listuser.user.username }}</a>
+					</h5>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% else %}
+		<p>There are no users for the site.</p>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+About
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron p-3">
+	<div class="container">
+		<h1 class="jumbotron-heading">About!</h1>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		This ia a about page<br/>
+		This tutorial has been brought to you by {{ name }}<br/>
+		Visits : {{ visits }}
+	</div>
+	<div class="p-4"></div>
+</div>
+<div>
+	<img src="{{ MEDIA_URL }}cat.jpg"
+	alt="Image of a cat" />
+</div>
+{% endblock %}
